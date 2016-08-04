@@ -65,8 +65,8 @@ public class PhotoPickerActivity extends AppCompatActivity implements EnterTextD
         Canvas c = new Canvas(mutableBitmap);
         Paint paint = new Paint();
         paint.setColor(Color.BLUE);
-        paint.setStyle(Paint.Style.FILL);
-        paint.setTextSize(35);
+        paint.setTextSize(45);
+        paint.setStyle(Paint.Style.FILL_AND_STROKE);
         c.drawText(text, x, y, paint);
         imageView.setImageBitmap(mutableBitmap);
     }
