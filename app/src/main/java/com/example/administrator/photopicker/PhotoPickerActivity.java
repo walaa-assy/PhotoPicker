@@ -1,6 +1,5 @@
 package com.example.administrator.photopicker;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,7 +9,6 @@ import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -130,32 +128,5 @@ public class PhotoPickerActivity extends AppCompatActivity implements EnterTextD
                 }
         }
     }
-
-    public void uploadImage(){
-       // Toast.makeText(this, "You have selected " , Toast.LENGTH_LONG).show();
-        String str[] = new String[] { "Camera", "Gallery" };
-        new AlertDialog.Builder(this).setItems(str,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        performImgPicAction(which);
-                    }
-                }).show();
-    }
-
-    void performImgPicAction(int which) {
-        Intent in;
-        if (which == 1) {
-            in = new Intent(
-                    Intent.ACTION_PICK,
-                    android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        } else {
-            in = new Intent();
-            in.setAction(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        }
-        startActivityForResult(
-                Intent.createChooser(in, "Select profile picture"), which);
-    }
-
-
+    
 }
