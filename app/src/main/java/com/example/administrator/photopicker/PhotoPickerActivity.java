@@ -102,10 +102,8 @@ public class PhotoPickerActivity extends AppCompatActivity implements EnterTextD
     public void selectImage(){
         Intent in = new Intent(
                 Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                //in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
                 in.setType("image/*");
-                //startActivity(in);
-        startActivityForResult(in, SELECT_PHOTO);
+                startActivityForResult(in, SELECT_PHOTO);
 
     }
 
@@ -128,5 +126,5 @@ public class PhotoPickerActivity extends AppCompatActivity implements EnterTextD
                 }
         }
     }
-    
+
 }
