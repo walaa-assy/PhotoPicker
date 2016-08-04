@@ -48,7 +48,7 @@ public class EnterTextDialogFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        final View rootView = inflater.inflate(R.layout.comment_dialog, null);
+        View rootView = inflater.inflate(R.layout.comment_dialog, null);
         editText = (EditText) rootView.findViewById(R.id.inputText);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -57,10 +57,12 @@ public class EnterTextDialogFragment extends DialogFragment {
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        //editText = (EditText) rootView.findViewById(R.id.inputText);
                         userInput = editText.getText().toString();
-                        mListener.onDialogPositiveClick(userInput);
-                        Toast.makeText(getActivity(), userInput , Toast.LENGTH_LONG).show();
+                        if(userInput.isEmpty()){
+                            Toast.makeText(getActivity(), "You did not enter any Text" , Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                        mListener.onDialogPositiveClick(userInput);}
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
