@@ -11,6 +11,7 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,29 +46,26 @@ public class EnterTextDialogFragment extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        // Get the layout inflater
+
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View rootView = inflater.inflate(R.layout.comment_dialog, null);
+        final View rootView = inflater.inflate(R.layout.comment_dialog, null);
         editText = (EditText) rootView.findViewById(R.id.inputText);
-        userInput = editText.getText().toString();
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(rootView)
                // .setTitle("Enter Your Text")
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
+                        //editText = (EditText) rootView.findViewById(R.id.inputText);
+                        userInput = editText.getText().toString();
                         mListener.onDialogPositiveClick(userInput);
-                        //Toast.makeText(getActivity(), userInput , Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), userInput , Toast.LENGTH_LONG).show();
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        //EnterTextDialogFragment.this.getDialog().cancel();
-//                        try {
-//                            finalize();
-//                        } catch (Throwable throwable) {
-//                            throwable.printStackTrace();
-//                        }
+
                         mListener.onDialogNegativeClick(EnterTextDialogFragment.this);
                     }
                 });
