@@ -74,6 +74,4 @@ public class EnterTextDialogFragment extends DialogFragment {
         return builder.create();
     }
 
-
-
 }
